@@ -1,0 +1,256 @@
+:root {
+  --bg: #0b0f12;
+  --text: #ffffff;
+  --muted: #b6b9bd;
+  --accent: #7c5cff;
+  --accent-2: #3bd6b0;
+  --card: #121820;
+  --alt-bg: #11161e;
+  --header-bg: rgba(10, 10, 10, 0.8);
+  --footer-border: rgba(255, 255, 255, 0.04);
+  --skill-bg: #1b1f25;
+  --transition: 300ms ease;
+}
+
+body {
+  margin: 20;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: "Inter", system-ui, sans-serif;
+  scroll-behavior: auto; /* disable default smooth scroll */
+}
+
+body.light {
+  --bg: #ffffff;
+  --text: #0f1721;
+  --muted: #58606b;
+  --card: #ffffff;
+  --alt-bg: #f6f8fb;
+  --header-bg: rgba(255, 255, 255, 0.9);
+  --footer-border: rgba(15, 23, 33, 0.06);
+  --skill-bg: #e9edf3;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.site-header {
+  background-color: var(--header-bg);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(8px);
+}
+
+.header-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 24px 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 700;
+  position: absolute;
+  left: 40px;
+}
+
+.brand img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.nav {
+  display: flex;
+  gap: 50px;
+}
+
+.nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.nav a:hover {
+  color: var(--accent);
+}
+
+.header-actions {
+  position: absolute;
+  right: 20px;
+}
+
+.btn-icon {
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* HERO */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 20px;
+  align-items: start;
+  padding-top: 40px;
+}
+
+.lead {
+  color: var(--muted);
+}
+
+/* PROFILE CARD */
+.profile-card {
+  text-align: center;
+  padding: 22px;
+  border-radius: 14px;
+  background: var(--card);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+.profile-avatar {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--accent);
+  animation: avatar-float 2.8s ease-in-out infinite;
+}
+
+@keyframes avatar-float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-socials {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.profile-socials a img {
+  width: 30px;
+  height: 22px;
+  filter: invert(1);
+  opacity: 0.8;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+body.light .profile-socials a img {
+  filter: invert(0);
+}
+
+.profile-socials a:hover img {
+  transform: scale(1.2);
+  opacity: 1;
+}
+
+/* SKILLS */
+.skills-grid {
+  display: grid;
+  gap: 30px;
+}
+
+.skill-bar {
+  background: var(--skill-bg);
+  height: 20px;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.skill-bar .fill {
+  display: block;
+  height: 100%;
+  width: 0;
+  border-radius: 12px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-2) 60%);
+  transition: width 1s cubic-bezier(0.2, 0.9, 0.2, 1);
+}
+
+.skill-head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.project-card {
+  background: var(--card);
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+.alt-bg {
+  background-color: var(--alt-bg);
+}
+
+.site-footer {
+  text-align: center;
+  padding: 20px 0;
+  color: var(--muted);
+  border-top: 1px solid var(--footer-border);
+}
+a:link {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#darkToggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+
+@media (max-width: 800px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .brand {
+    position: static;
+  }
+
+  .header-actions {
+    position: static;
+  }
+
+  .header-inner {
+    justify-content: space-between;
+  }
+}
