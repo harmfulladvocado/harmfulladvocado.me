@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Episode Archive</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #0f172a;
+  color: #e5e7eb;
+  margin: 0;
+  padding: 20px;
+}
+h1 { text-align: center; }
+
+input {
+  width: 100%;
+  max-width: 600px;
+  padding: 12px;
+  margin: 20px auto;
+  display: block;
+  border-radius: 10px;
+  border: none;
+}
+
+.archive {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #020617;
+  border-radius: 16px;
+  padding: 12px;
+}
+
+video {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.meta h3 {
+  margin: 8px 0 4px;
+}
+.meta p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+</style>
+</head>
+
+<body>
+
+<h1>📺 Episode Archive</h1>
+<input type="text" id="search" placeholder="Search episodes...">
+
+<div class="archive" id="archive"></div>
+
+<script>
+const episodes = [];
+
+// AUTO-GENERATE 100 EPISODES
+for (let i = 1; i <= 100; i++) {
+  episodes.push({
+    title: `Episode ${i}`,
+    file: `videos/ep${String(i).padStart(2, '0')}.mp4`,
+    date: `2025`,
+    notes: `Episode ${i} description`
+  });
+}
+
+const archive = document.getElementById("archive");
+const search = document.getElementById("search");
+
+function render(list) {
+  archive.innerHTML = "";
+  list.forEach(ep => {
+    archive.innerHTML += `
+      <div class="card" data-title="${ep.title.toLowerCase()}">
+        <video controls preload="metadata">
+          <source src="${ep.file}" type="video/mp4">
+        </video>
+        <div class="meta">
+          <h3>${ep.title}</h3>
+          <p>${ep.date}</p>
+          <p>${ep.notes}</p>
+        </div>
+      </div>
+    `;
+  });
+}
+
+search.addEventListener("input", () => {
+  const q = search.value.toLowerCase();
+  render(episodes.filter(e => e.title.toLowerCase().includes(q)));
+});
+
+render(episodes);
+</script>
+
+</body>
+</html>
