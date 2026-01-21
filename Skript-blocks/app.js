@@ -1,452 +1,316 @@
-:root {
-    --bg-primary: #f5f5f5;
-    --bg-secondary: #ffffff;
-    --bg-tertiary: #e8e8e8;
-    --text-primary: #333333;
-    --text-secondary: #666666;
-    --border-color: #cccccc;
-    --shadow: rgba(0, 0, 0, 0.1);
-    --event-color: #FFD700;
-    --condition-color: #87CEEB;
-    --effect-color: #90EE90;
-    --expression-color: #FFB6C1;
-    --loop-color: #DDA0DD;
-    --variable-color: #FFA07A;
-}
+// Skript Block Editor Application
+document.addEventListener('DOMContentLoaded', () => {
+    // DOM Elements
+    const workspace = document.getElementById('workspace');
+    const codeDisplay = document.getElementById('code-display');
+    const themeToggle = document.getElementById('theme-toggle');
+    const docsToggle = document.getElementById('docs-toggle');
+    const docsPanel = document.getElementById('docs-panel');
+    const closeDocs = document.getElementById('close-docs');
+    const clearWorkspace = document.getElementById('clear-workspace');
+    const copyCode = document.getElementById('copy-code');
 
-body.dark-mode {
-    --bg-primary: #1e1e1e;
-    --bg-secondary: #2d2d2d;
-    --bg-tertiary: #3d3d3d;
-    --text-primary: #e0e0e0;
-    --text-secondary: #b0b0b0;
-    --border-color: #555555;
-    --shadow: rgba(0, 0, 0, 0.5);
-}
+    // State
+    let workspaceBlocks = [];
+    let blockIdCounter = 0;
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-    transition: background-color 0.3s, color 0.3s;
-    overflow: hidden;
-}
-
-.container {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Header */
-.header {
-    background-color: var(--bg-secondary);
-    padding: 1rem 2rem;
-    box-shadow: 0 2px 4px var(--shadow);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid var(--border-color);
-}
-
-.header h1 {
-    font-size: 1.6rem;
-    color: var(--text-primary);
-}
-
-.header-controls {
-    display: flex;
-    gap: 0.5rem;
-}
-
-.btn {
-    padding: 0.45rem 0.9rem;
-    background-color: var(--bg-tertiary);
-    color: var(--text-primary);
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.85rem;
-    transition: background-color 0.2s, transform 0.1s;
-}
-
-.btn:hover {
-    background-color: var(--bg-primary);
-    transform: translateY(-1px);
-}
-
-.btn:active {
-    transform: translateY(0);
-}
-
-/* Main Content */
-.main-content {
-    display: flex;
-    flex: 1;
-    overflow: hidden;
-}
-
-/* Block Palette */
-.block-palette {
-    width: 250px;
-    background-color: var(--bg-secondary);
-    border-right: 2px solid var(--border-color);
-    overflow-y: auto;
-    padding: 1rem;
-}
-
-.block-palette h2 {
-    font-size: 1.05rem;
-    margin-bottom: 1rem;
-    color: var(--text-primary);
-}
-
-.palette-section {
-    margin-bottom: 1.5rem;
-}
-
-.palette-section h3 {
-    font-size: 0.95rem;
-    margin-bottom: 0.5rem;
-    color: var(--text-secondary);
-}
-
-.blocks-container {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-/* Workspace */
-.workspace {
-    flex: 1;
-    padding: 1rem;
-    overflow: auto;
-    position: relative;
-}
-
-.workspace h2 {
-    font-size: 1.05rem;
-    margin-bottom: 1rem;
-    color: var(--text-primary);
-}
-
-.drop-zone {
-    min-height: calc(100vh - 200px);
-    background-color: var(--bg-secondary);
-    border: 2px dashed var(--border-color);
-    border-radius: 8px;
-    padding: 1rem;
-    position: relative;
-}
-
-.drop-zone.drag-over {
-    background-color: var(--bg-tertiary);
-    border-color: var(--text-secondary);
-}
-
-/* Code Output */
-.code-output {
-    width: 350px;
-    background-color: var(--bg-secondary);
-    border-left: 2px solid var(--border-color);
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-}
-
-.code-output h2 {
-    font-size: 1.05rem;
-    margin-bottom: 1rem;
-    color: var(--text-primary);
-}
-
-/* Make generated code font smaller and prevent wrapping; allow horizontal scroll instead */
-#code-display {
-    flex: 1;
-    background-color: var(--bg-tertiary);
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    padding: 1rem;
-    overflow: auto;
-    font-family: 'Courier New', monospace;
-    font-size: 0.78rem; /* smaller font to reduce line breaks */
-    color: var(--text-primary);
-    white-space: pre; /* prevent wrapping - preserve newlines only */
-    overflow-x: auto;
-}
-
-#copy-code {
-    margin-top: 0.5rem;
-}
-
-.workspace .block {
-    padding: 0.6rem 0.9rem;
-    border-radius: 6px;
-    cursor: grab;
-    user-select: none;
-    box-shadow: 0 2px 4px var(--shadow);
-    transition: transform 0.1s, box-shadow 0.1s;
-    font-size: 0.78rem; /* smaller block font */
-    position: absolute;
-    border: 2px solid rgba(0, 0, 0, 0.2);
-}
-
-.block:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px var(--shadow);
-}
-
-.block.dragging {
-    opacity: 1;
-    cursor: grabbing;
-}
-
-.block.event {
-    background-color: var(--event-color);
-    color: #000;
-}
-
-.block.condition {
-    background-color: var(--condition-color);
-    color: #000;
-}
-
-.block.effect {
-    background-color: var(--effect-color);
-    color: #000;
-}
-
-.block.expression {
-    background-color: var(--expression-color);
-    color: #000;
-}
-
-.block.loop {
-    background-color: var(--loop-color);
-    color: #000;
-}
-
-.block.variable {
-    background-color: var(--variable-color);
-    color: #000;
-}
-
-.block input,
-.block select {
-    padding: 0.2rem 0.4rem;
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    border-radius: 3px;
-    background-color: rgba(255, 255, 255, 0.85);
-    color: #000;
-    font-size: 0.72rem;
-    margin: 0 0.2rem;
-}
-
-.block input:focus,
-.block select:focus {
-    outline: 2px solid rgba(0, 0, 0, 0.45);
-}
-
-/* Small visual connector at bottom of container blocks to indicate where to snap children */
-.block .connector-bottom {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: -8px;
-    width: 40px;
-    height: 12px;
-    background: rgba(0,0,0,0.08);
-    border-radius: 6px;
-    display: block;
-    pointer-events: none;
-    opacity: 0.85;
-}
-
-/* Highlight containers that can accept a snap while dragging */
-.block.can-snap {
-    box-shadow: 0 0 0 3px rgba(80,180,80,0.18);
-}
-
-/* Insertion ghost (visual placeholder) */
-.insertion-ghost {
-    border: 10px dashed rgba(0, 0, 0, 0.25);
-    background: rgba(0,0,0,0.03);
-    pointer-events: none;
-    z-index: 999;
-}
-
-
-/* Delete button */
-.block-delete {
-    position: absolute;
-    top: 0.25rem;
-    right: 0.25rem;
-    background-color: rgba(255, 0, 0, 0.7);
-    color: white;
-    border: none;
-    border-radius: 3px;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    font-size: 0.7rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.2s;
-}
-
-.block:hover .block-delete {
-    opacity: 1;
-}
-
-.block-delete:hover {
-    background-color: rgba(255, 0, 0, 0.9);
-}
-
-/* Documentation Panel */
-.docs-panel {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 500px;
-    height: 100vh;
-    background-color: var(--bg-secondary);
-    border-left: 2px solid var(--border-color);
-    box-shadow: -4px 0 8px var(--shadow);
-    z-index: 1000;
-    transform: translateX(100%);
-    transition: transform 0.3s ease;
-    display: flex;
-    flex-direction: column;
-}
-
-.docs-panel.show {
-    transform: translateX(0);
-}
-
-.docs-panel.hidden {
-    transform: translateX(100%);
-}
-
-.docs-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 1.5rem;
-    border-bottom: 2px solid var(--border-color);
-}
-
-.docs-header h2 {
-    font-size: 1.2rem;
-    color: var(--text-primary);
-}
-
-.docs-content {
-    flex: 1;
-    padding: 1.5rem;
-    overflow-y: auto;
-}
-
-.docs-section {
-    margin-bottom: 2rem;
-}
-
-.docs-section h3 {
-    font-size: 1.05rem;
-    color: var(--text-primary);
-    margin-bottom: 0.75rem;
-    border-bottom: 2px solid var(--border-color);
-    padding-bottom: 0.25rem;
-}
-
-.docs-section p {
-    margin-bottom: 0.75rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-}
-
-.docs-section ul {
-    list-style: none;
-    padding-left: 0;
-}
-
-.docs-section li {
-    padding: 0.5rem 0;
-    color: var(--text-secondary);
-    line-height: 1.6;
-}
-
-.docs-section li strong {
-    color: var(--text-primary);
-    font-family: 'Courier New', monospace;
-    background-color: var(--bg-tertiary);
-    padding: 0.125rem 0.5rem;
-    border-radius: 3px;
-}
-
-.docs-section a {
-    color: #4a9eff;
-    text-decoration: none;
-}
-
-.docs-section a:hover {
-    text-decoration: underline;
-}
-
-/* Scrollbar styling */
-::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-}
-
-::-webkit-scrollbar-track {
-    background: var(--bg-tertiary);
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--border-color);
-    border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--text-secondary);
-}
-
-/* Responsive */
-@media (max-width: 1024px) {
-    .block-palette {
-        width: 200px;
+    // Helper function to escape HTML to prevent XSS
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
     }
 
-    .code-output {
-        width: 300px;
+    // Initialize the application
+    function init() {
+        populateBlockPalette();
+        setupEventListeners();
+        loadTheme();
+        updateCode();
     }
 
-    .docs-panel {
-        width: 400px;
-    }
-}
+    // Populate the block palette with blocks from blockDefinitions
+    function populateBlockPalette() {
+        const categories = ['events', 'conditions', 'effects', 'loops', 'variables'];
+        
+        categories.forEach(category => {
+            const container = document.getElementById(`${category}-blocks`);
+            if (!container) return;
+            
+            const blocks = blockDefinitions[category];
+            if (!blocks) return;
 
-@media (max-width: 768px) {
-    .main-content {
-        flex-direction: column;
+            blocks.forEach(blockDef => {
+                const blockElement = createPaletteBlock(blockDef);
+                container.appendChild(blockElement);
+            });
+        });
     }
 
-    .block-palette,
-    .code-output {
-        width: 100%;
-        max-height: 200px;
+    // Create a block element for the palette
+    function createPaletteBlock(blockDef) {
+        const block = document.createElement('div');
+        block.className = `block ${blockDef.type}`;
+        block.draggable = true;
+        block.dataset.blockDef = JSON.stringify(blockDef);
+        
+        let labelText = blockDef.label;
+        block.textContent = labelText;
+        
+        // Palette blocks don't need inputs
+        block.style.position = 'relative';
+        block.style.cursor = 'grab';
+        
+        // Drag events for palette blocks
+        block.addEventListener('dragstart', handlePaletteDragStart);
+        
+        return block;
     }
 
-    .docs-panel {
-        width: 100%;
+    // Create a workspace block instance
+    function createWorkspaceBlock(blockDef, x, y) {
+        const block = document.createElement('div');
+        block.className = `block ${blockDef.type}`;
+        block.draggable = true;
+        block.dataset.blockId = blockIdCounter++;
+        block.dataset.blockDef = JSON.stringify(blockDef);
+        block.style.position = 'absolute';
+        block.style.left = `${x}px`;
+        block.style.top = `${y}px`;
+        
+        // Build block content with inputs
+        buildBlockContent(block, blockDef);
+        
+        // Add delete button
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'block-delete';
+        deleteBtn.textContent = '✕';
+        deleteBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            removeBlock(block);
+        });
+        block.appendChild(deleteBtn);
+        
+        // Drag events for workspace blocks
+        block.addEventListener('dragstart', handleWorkspaceDragStart);
+        block.addEventListener('dragend', handleDragEnd);
+        
+        return block;
     }
-}
+
+    // Build block content with inputs
+    function buildBlockContent(block, blockDef) {
+        let code = blockDef.code;
+        
+        if (!blockDef.inputs || blockDef.inputs.length === 0) {
+            block.innerHTML = blockDef.label;
+            return;
+        }
+        
+        // Parse the code and replace placeholders with inputs
+        let html = code;
+        blockDef.inputs.forEach(input => {
+            const placeholder = `[${input.name}]`;
+            let inputElement = '';
+            
+            if (input.type === 'text') {
+                inputElement = `<input type="text" placeholder="${escapeHtml(input.placeholder)}" data-input="${escapeHtml(input.name)}" size="${input.placeholder.length}">`;
+            } else if (input.type === 'number') {
+                inputElement = `<input type="number" placeholder="${escapeHtml(input.placeholder)}" data-input="${escapeHtml(input.name)}" size="5">`;
+            }
+            
+            html = html.replace(placeholder, inputElement);
+        });
+        
+        block.innerHTML = html;
+    }
+
+    // Handle drag start from palette
+    function handlePaletteDragStart(e) {
+        const blockDef = JSON.parse(e.target.dataset.blockDef);
+        e.dataTransfer.effectAllowed = 'copy';
+        e.dataTransfer.setData('application/json', JSON.stringify({
+            type: 'palette',
+            blockDef: blockDef
+        }));
+    }
+
+    // Handle drag start from workspace
+    function handleWorkspaceDragStart(e) {
+        const block = e.target.closest('.block');
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('application/json', JSON.stringify({
+            type: 'workspace',
+            blockId: block.dataset.blockId
+        }));
+        block.classList.add('dragging');
+    }
+
+    // Handle drag end
+    function handleDragEnd(e) {
+        e.target.classList.remove('dragging');
+    }
+
+    // Setup event listeners
+    function setupEventListeners() {
+        // Workspace drop zone
+        workspace.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            workspace.classList.add('drag-over');
+        });
+        
+        workspace.addEventListener('dragleave', () => {
+            workspace.classList.remove('drag-over');
+        });
+        
+        workspace.addEventListener('drop', handleWorkspaceDrop);
+        
+        // Theme toggle
+        themeToggle.addEventListener('click', toggleTheme);
+        
+        // Docs panel
+        docsToggle.addEventListener('click', () => {
+            docsPanel.classList.remove('hidden');
+            docsPanel.classList.add('show');
+        });
+        
+        closeDocs.addEventListener('click', () => {
+            docsPanel.classList.remove('show');
+            docsPanel.classList.add('hidden');
+        });
+        
+        // Clear workspace
+        clearWorkspace.addEventListener('click', () => {
+            if (confirm('Are you sure you want to clear the workspace?')) {
+                workspace.innerHTML = '';
+                workspaceBlocks = [];
+                updateCode();
+            }
+        });
+        
+        // Copy code
+        copyCode.addEventListener('click', () => {
+            const code = codeDisplay.textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                const originalText = copyCode.textContent;
+                copyCode.textContent = '✓ Copied!';
+                setTimeout(() => {
+                    copyCode.textContent = originalText;
+                }, 2000);
+            });
+        });
+        
+        // Update code when inputs change
+        workspace.addEventListener('input', () => {
+            updateCode();
+        });
+    }
+
+    // Handle drop on workspace
+    function handleWorkspaceDrop(e) {
+        e.preventDefault();
+        workspace.classList.remove('drag-over');
+        
+        const data = JSON.parse(e.dataTransfer.getData('application/json'));
+        const rect = workspace.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        if (data.type === 'palette') {
+            // Create new block from palette
+            const block = createWorkspaceBlock(data.blockDef, x, y);
+            workspace.appendChild(block);
+            workspaceBlocks.push(block);
+            updateCode();
+        } else if (data.type === 'workspace') {
+            // Move existing block
+            const block = workspace.querySelector(`[data-block-id="${data.blockId}"]`);
+            if (block) {
+                block.style.left = `${x}px`;
+                block.style.top = `${y}px`;
+            }
+        }
+    }
+
+    // Remove block from workspace
+    function removeBlock(block) {
+        block.remove();
+        workspaceBlocks = workspaceBlocks.filter(b => b !== block);
+        updateCode();
+    }
+
+    // Update generated code
+    function updateCode() {
+        const blocks = Array.from(workspace.querySelectorAll('.block'));
+        
+        if (blocks.length === 0) {
+            codeDisplay.textContent = '# Drag blocks here to generate code';
+            return;
+        }
+        
+        // Sort blocks by Y position (top to bottom)
+        blocks.sort((a, b) => {
+            const aY = parseInt(a.style.top) || 0;
+            const bY = parseInt(b.style.top) || 0;
+            return aY - bY;
+        });
+        
+        let code = '';
+        let indent = 0;
+        
+        blocks.forEach((block, index) => {
+            const blockDef = JSON.parse(block.dataset.blockDef);
+            let blockCode = blockDef.code;
+            
+            // Replace input placeholders with actual values
+            if (blockDef.inputs) {
+                blockDef.inputs.forEach(input => {
+                    const inputElement = block.querySelector(`[data-input="${input.name}"]`);
+                    const value = inputElement ? inputElement.value : input.placeholder;
+                    blockCode = blockCode.replace(`[${input.name}]`, value);
+                });
+            }
+            
+            // Handle indentation
+            if (blockCode.endsWith(':')) {
+                code += '\t'.repeat(indent) + blockCode + '\n';
+                indent++;
+            } else if (blockDef.type === 'condition' && blockDef.id === 'condition-else') {
+                indent = Math.max(0, indent - 1);
+                code += '\t'.repeat(indent) + blockCode + '\n';
+                indent++;
+            } else {
+                code += '\t'.repeat(indent) + blockCode + '\n';
+            }
+            
+            // Reset indent if it's the last block or next block is an event
+            if (index < blocks.length - 1) {
+                const nextBlockDef = JSON.parse(blocks[index + 1].dataset.blockDef);
+                if (nextBlockDef.type === 'event' || nextBlockDef.id === 'condition-else') {
+                    indent = 0;
+                }
+            }
+        });
+        
+        codeDisplay.textContent = code;
+    }
+
+    // Theme management
+    function toggleTheme() {
+        const body = document.body;
+        const isDark = body.classList.toggle('dark-mode');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        themeToggle.textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+    }
+
+    function loadTheme() {
+        const theme = localStorage.getItem('theme');
+        if (theme === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeToggle.textContent = '☀️ Light Mode';
+        }
+    }
+
+    // Initialize the application
+    init();
+});
