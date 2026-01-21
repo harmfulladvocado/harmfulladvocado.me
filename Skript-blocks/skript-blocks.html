@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skript Block Editor</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>Skript Block Editor</h1>
+            <div class="header-controls">
+                <button id="theme-toggle" class="btn">🌙 Dark Mode</button>
+                <button id="docs-toggle" class="btn">📚 Docs</button>
+                <button id="clear-workspace" class="btn">🗑️ Clear</button>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Block Palette -->
+            <aside class="block-palette">
+                <h2>Blocks</h2>
+                <div class="palette-section">
+                    <h3>Events</h3>
+                    <div id="events-blocks" class="blocks-container"></div>
+                </div>
+                <div class="palette-section">
+                    <h3>Conditions</h3>
+                    <div id="conditions-blocks" class="blocks-container"></div>
+                </div>
+                <div class="palette-section">
+                    <h3>Effects</h3>
+                    <div id="effects-blocks" class="blocks-container"></div>
+                </div>
+                <!-- Expressions removed -->
+                <div class="palette-section">
+                    <h3>Loops</h3>
+                    <div id="loops-blocks" class="blocks-container"></div>
+                </div>
+                <div class="palette-section">
+                    <h3>Variables</h3>
+                    <div id="variables-blocks" class="blocks-container"></div>
+                </div>
+            </aside>
+
+            <!-- Workspace -->
+            <main class="workspace">
+                <h2>Workspace</h2>
+                <div id="workspace" class="drop-zone"></div>
+            </main>
+
+            <!-- Code Output -->
+            <aside class="code-output">
+                <h2>Generated Skript Code</h2>
+                <pre id="code-display"></pre>
+                <button id="copy-code" class="btn">📋 Copy Code</button>
+            </aside>
+        </div>
+
+        <!-- Documentation Panel (Hidden by default) -->
+        <div id="docs-panel" class="docs-panel hidden">
+            <div class="docs-header">
+                <h2>Skript Documentation</h2>
+                <button id="close-docs" class="btn">✕</button>
+            </div>
+            <div class="docs-content">
+                <div class="docs-section">
+                    <h3>Events</h3>
+                    <p>Events are triggers that start your script when something happens in the game.</p>
+                    <ul>
+                        <li><strong>on join:</strong> Triggers when a player joins the server</li>
+                        <li><strong>on quit:</strong> Triggers when a player leaves the server</li>
+                        <li><strong>on death:</strong> Triggers when a player dies</li>
+                        <li><strong>on break:</strong> Triggers when a block is broken</li>
+                        <li><strong>on place:</strong> Triggers when a block is placed</li>
+                        <li><strong>on chat:</strong> Triggers when a player sends a chat message</li>
+                        <li><strong>on right click:</strong> Triggers when a player right clicks</li>
+                    </ul>
+                </div>
+
+                <div class="docs-section">
+                    <h3>Conditions</h3>
+                    <p>Conditions check if something is true or false before executing code.</p>
+                    <ul>
+                        <li><strong>if &lt;condition&gt;:</strong> Executes if condition is true</li>
+                        <li><strong>player has permission:</strong> Checks if player has a permission</li>
+                        <li><strong>player is op:</strong> Checks if player is an operator</li>
+                        <li><strong>block is:</strong> Checks block type</li>
+                    </ul>
+                </div>
+
+                <div class="docs-section">
+                    <h3>Effects</h3>
+                    <p>Effects are actions that do something in the game.</p>
+                    <ul>
+                        <li><strong>send:</strong> Sends a message to a player</li>
+                        <li><strong>broadcast:</strong> Sends a message to all players</li>
+                        <li><strong>give:</strong> Gives an item to a player</li>
+                        <li><strong>teleport:</strong> Teleports a player to a location</li>
+                        <li><strong>set:</strong> Sets a variable or property</li>
+                        <li><strong>execute command:</strong> Runs a command as a player or console</li>
+                    </ul>
+                </div>
+
+                <div class="docs-section">
+                    <h3>Variables</h3>
+                    <p>Variables store values for later use.</p>
+                    <ul>
+                        <li><strong>{_variable}:</strong> Local variable (only in current trigger)</li>
+                        <li><strong>{variable}:</strong> Global variable (across all scripts)</li>
+                        <li><strong>set {var} to value:</strong> Assign a value to a variable</li>
+                        <li><strong>add value to {var}:</strong> Add to a variable</li>
+                        <li><strong>delete {var}:</strong> Delete a variable</li>
+                    </ul>
+                </div>
+
+                <div class="docs-section">
+                    <h3>Loops</h3>
+                    <p>Loops repeat code multiple times.</p>
+                    <ul>
+                        <li><strong>loop all players:</strong> Loop through all online players</li>
+                        <li><strong>loop blocks:</strong> Loop through blocks in a region</li>
+                        <li><strong>loop-player:</strong> Current player in a loop</li>
+                        <li><strong>loop-value:</strong> Current value in a loop</li>
+                    </ul>
+                </div>
+
+                <div class="docs-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="https://docs.skriptlang.org/" target="_blank">Official Skript Documentation</a></li>
+                        <li><a href="https://docs.skunity.com/syntax/events" target="_blank">skUnity Syntax Reference</a></li>
+                        <li><a href="https://skripthub.net/docs/" target="_blank">SkriptHub Documentation</a></li>
+                        <li><a href="https://github.com/SkriptLang/Skript/" target="_blank">Skript GitHub Repository</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="blocks.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
