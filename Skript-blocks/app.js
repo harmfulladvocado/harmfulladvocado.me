@@ -14,6 +14,13 @@ document.addEventListener('DOMContentLoaded', () => {
     let workspaceBlocks = [];
     let blockIdCounter = 0;
 
+    // Helper function to escape HTML to prevent XSS
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
     // Initialize the application
     function init() {
         populateBlockPalette();
@@ -107,9 +114,9 @@ document.addEventListener('DOMContentLoaded', () => {
             let inputElement = '';
             
             if (input.type === 'text') {
-                inputElement = `<input type="text" placeholder="${input.placeholder}" data-input="${input.name}" size="${input.placeholder.length}">`;
+                inputElement = `<input type="text" placeholder="${escapeHtml(input.placeholder)}" data-input="${escapeHtml(input.name)}" size="${input.placeholder.length}">`;
             } else if (input.type === 'number') {
-                inputElement = `<input type="number" placeholder="${input.placeholder}" data-input="${input.name}" size="5">`;
+                inputElement = `<input type="number" placeholder="${escapeHtml(input.placeholder)}" data-input="${escapeHtml(input.name)}" size="5">`;
             }
             
             html = html.replace(placeholder, inputElement);
