@@ -1,74 +1,81 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const body = document.body;
-  const darkToggle = document.getElementById("darkToggle");
-  const darkIcon = document.getElementById("darkIcon");
-  const darkText = document.getElementById("darkText");
+document.addEventListener('DOMContentLoaded', () => {
+  const themeToggle = document.getElementById('themeToggle');
+  const html = document.documentElement;
 
-  function applyTheme(theme) {
-    if (theme === "light") {
-      body.classList.add("light");
-      darkIcon.textContent = "🌞";
-      darkText.textContent = "i told you💔";
-    } else {
-      body.classList.remove("light");
-      darkIcon.textContent = "🌙";
-      darkText.textContent = "don't";
-    }
+  // Check for saved theme preference, default to dark
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  html.setAttribute('data-theme', savedTheme);
+  updateThemeButton(savedTheme);
+
+  function updateThemeButton(theme) {
+    themeToggle.textContent = theme === 'dark' ? '🌙' : '☀️';
   }
 
-  const saved = localStorage.getItem("theme");
-  applyTheme(saved || "dark");
-
-  darkToggle.addEventListener("click", () => {
-    const newTheme = body.classList.contains("light") ? "dark" : "light";
-    applyTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
+  themeToggle.addEventListener('click', () => {
+    const current = html.getAttribute('data-theme');
+    const newTheme = current === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', newTheme);
+    updateThemeButton(newTheme);
+    localStorage.setItem('theme', newTheme);
   });
 
-  const bars = document.querySelectorAll(".skill-bar");
-  const observer = new IntersectionObserver(
-    (entries, obs) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        const bar = entry.target;
-        const percent = parseFloat(bar.dataset.percent);
-        const fill = bar.querySelector(".fill");
-        fill.style.width = percent + "%";
-        obs.unobserve(bar);
-      });
-    },
-    { threshold: 0.4 }
-  );
-  bars.forEach((b) => observer.observe(b));
+  // Project cards interaction
+  const projectCards = document.querySelectorAll('.project-card');
+  
+  projectCards.forEach(card => {
+    card.addEventListener('mouseenter', function() {
+      this.style.transform = 'translateY(-4px)';
+    });
 
-  const headerHeight = document.querySelector(".site-header").offsetHeight;
-  const easeInOutCubic = (t) =>
-    t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    card.addEventListener('mouseleave', function() {
+      this.style.transform = 'translateY(0)';
+    });
 
-  function smoothScrollTo(targetY, duration = 800) {
-    const startY = window.scrollY;
-    const diff = targetY - startY;
-    let startTime = null;
+    card.addEventListener('click', function(e) {
+      if (e.target.tagName !== 'A') {
+        const links = this.querySelectorAll('a');
+        if (links.length > 0) {
+          window.open(links[0].href, '_blank');
+        }
+      }
+    });
+  });
 
-    function animateScroll(currentTime) {
-      if (!startTime) startTime = currentTime;
-      const time = Math.min((currentTime - startTime) / duration, 1);
-      const eased = easeInOutCubic(time);
-      window.scrollTo(0, startY + diff * eased);
-      if (time < 1) requestAnimationFrame(animateScroll);
-    }
+  // Experience cards interaction
+  const experienceItems = document.querySelectorAll('.experience-item');
+  experienceItems.forEach(item => {
+    item.addEventListener('mouseenter', function() {
+      this.style.transform = 'translateY(-4px)';
+    });
 
-    requestAnimationFrame(animateScroll);
-  }
+    item.addEventListener('mouseleave', function() {
+      this.style.transform = 'translateY(0)';
+    });
+  });
 
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", (e) => {
-      e.preventDefault();
-      const id = anchor.getAttribute("href");
-      const target = document.querySelector(id);
-      if (!target) return;
-      const targetY = target.offsetTop - headerHeight + 1;
-      smoothScrollTo(targetY, 900); // 900ms duration
+  // Skill bars animation
+  const skillBars = document.querySelectorAll('.skill-fill');
+  const skillObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animation = 'fillWidth 1s ease-out forwards';
+      }
+    });
+  });
+
+  skillBars.forEach(bar => skillObserver.observe(bar));
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      if (href !== '#') {
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
     });
   });
 });

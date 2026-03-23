@@ -1,339 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>harmfulladvocado - Developer Portfolio</title>
-    <meta
-      name="description"
-      content="harmfulladvocado - creative developer focused on scripting, automation, and digital design."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="icon" type="image/x-icon" href="/fotos/favicon.ico">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="styles.css" />
-    <script src="scripts.js"></script>
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>harmfulladvocado</title>
+  <meta name="description" content="Developer portfolio" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css" />
+</head>
 
-  <body>
-    <header class="site-header">
-      <div class="container header-inner">
-        <a class="brand" href="#hero">
-          <img src="https://i.postimg.cc/bNqFP9H5/Schermafbeelding-2025-12-09-203923.png" alt="Avocado logo" />
-          <span class="brand-text">harmfulladvocado</span>
-        </a>
-
-        <nav class="nav">
-          <a href="#hero">Home</a>
-          <a href="#about">About</a>
-          <a href="#projects">Projects</a>
-          <a href="#experience">Experience</a>
-        </nav>
-
-      <div class="header-actions">
-        <button id="darkToggle" class="btn-icon" title="Toggle dark mode">
-          <span id="darkIcon">🌙</span>
-          <span id="darkText">don't</span>
-        </button>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <div class="header-left">
+        <a href="#" class="site-logo">harmfulladvocado</a>
       </div>
-    </header>
+      <nav class="nav">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" title="Toggle theme">🌙</button>
+    </div>
+  </header>
 
-    <main class="container">
-      <section id="hero" class="hero-grid">
-        <div>
-          <h1>Hi!, I'm <span class="muted">harmfulladvocado</span></h1>
-          <p class="lead">
-            I’m a 15-year-old developer from Belgium, i love coding. I mostly
-            code in
-            <a href="https://github.com/SkriptLang/Skript" target="_blank"
-              >Skript</a
-            >, Python & javascript
-          </p>
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-text">
+        <h1>Hey, I'm <span class="name">harmfulladvocado</span></h1>
+        <p class="subtitle">15-year-old developer from Belgium</p>
+        <p class="bio">i mainly mess around with Minecraft server stuff using Skript. also write some Python and JavaScript when i feel like it. i've been self-teaching myself for a while now.</p>
+        <p class="bio">co-managed servers with 100-300 players, and some that had 1000+ built various tools to make server management less painful.</p>
+        <div class="social-links">
+          <a href="https://github.com/harmfulladvocado" target="_blank" title="GitHub" class="social-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+          </a>
+          <a href="https://discord.com/users/1022221569340227594" target="_blank" title="Discord" class="social-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20.322 1.994c-1.666-.992-3.429-1.727-5.273-2.223-.223-.037-.446.047-.545.243-.227.4-.481 1.018-.657 1.477-.997-.149-1.988-.149-2.97 0-.177-.459-.418-1.077-.646-1.477-.099-.196-.322-.28-.545-.243-1.844.496-3.607 1.231-5.273 2.223-.036.021-.071.05-.104.085C1.413 8.134.72 14.162 1.92 19.998c.054.266.267.486.527.545 2.036.394 4.03.975 5.956 1.732.23.084.47.01.596-.19.413-.571.78-1.175 1.093-1.809.186-.373-.014-.822-.384-.92-.774-.223-1.514-.505-2.221-.851.189-.132.373-.275.552-.428.151-.115.351-.103.49.035 4.658 3.369 9.701 3.369 14.302 0 .139-.138.339-.15.49-.035.78.536 1.447 1.008 2.221.851.37.279.572.728.384.92-.313.634-.68 1.238-1.093 1.809-.126.2-.366.274-.596.19-1.926-.757-3.92-1.338-5.956-1.732-.26-.059-.473-.279-.527-.545-1.203-5.836-.508-11.864 2.268-15.798.031-.035.067-.064.104-.085zm-11.997 14.456c-1.248 0-2.278-1.126-2.278-2.508 0-1.382 1.012-2.508 2.278-2.508 1.276 0 2.302 1.126 2.278 2.508 0 1.382-1.012 2.508-2.278 2.508zm8.002 0c-1.248 0-2.278-1.126-2.278-2.508 0-1.382 1.012-2.508 2.278-2.508 1.276 0 2.302 1.126 2.278 2.508 0 1.382-1.002 2.508-2.278 2.508z"/>
+            </svg>
+          </a>
+          <a href="https://www.spigotmc.org/members/vicctor158963.2185058" target="_blank" title="SpigotMC" class="social-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+              <path d="M12 7v5l4 2.5"/>
+            </svg>
+          </a>
         </div>
+      </div>
+    </section>
 
-        <aside class="profile-card">
-          <div class="profile-avatar">
-            <img src="https://i.postimg.cc/bNqFP9H5/Schermafbeelding-2025-12-09-203923.png" alt="Profile avatar" />
-          </div>
-          <h3>harmfulladvocado</h3>
-          <p class="muted">Programmer / Developer</p>
-          <div class="profile-socials">
-            <a
-              href="https://discord.com/users/1022221569340227594"
-              target="_blank"
-            >
-              <img
-                src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/discord.svg"
-                alt="Discord"
-              />
-            </a>
-            <a href="https://github.com/harmfulladvocado" target="_blank">
-              <img
-                src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg"
-                alt="GitHub"
-              />
-            </a>
-            <a
-              href="https://www.spigotmc.org/members/vicctor158963.2185058"
-              target="_blank"
-            >
-              <img
-                src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/spigotmc.svg"
-                alt="Spigotmc"
-              />
-            </a>
-          </div>
-        </aside>
-      </section>
-      <section id="about">
-        <h2>About Me</h2>
-        <p>
-          I started with wondering how games, software, and Minecraft servers
-          were built. I played Minecraft since the age of 7, so I have some
-          experience in playing servers, which helped me with ideas over time. I
-          really liked seeing projects become big, and I liked fixing code for
-          other people, so I did it more. In school i study Computer Science, or at least the
-          high-school version of it.
-        </p>
-      </section>
+    <section id="about" class="about">
+      <h2>About</h2>
+      <div class="about-content">
+        <p>Started coding because i was curious how minecraft servers worked. been playing since i was 7 and that fascination never really went away. spent a lot of time building projects, and figuring out how to make servers run smoothly.
+          I'm in school studying Computer Science (or the high school version of it at least). outside of that i'm constantly working on something, whether it's a new idea, a tool that automates something annoying, or just experimenting.</p>
+      </div>
+    </section>
 
-      <section id="skills">
-        <h2>Skills</h2>
-        <div class="skills-grid">
-          <div class="skill">
-            <div class="skill-head">
-              <strong>Skript</strong><span>~450h</span>
-            </div>
-            <div class="skill-bar" data-percent="90">
-              <span class="fill"></span>
-            </div>
-          </div>
-          <div class="skill">
-            <div class="skill-head">
-              <strong>JS/TS</strong><span>~150h</span>
-            </div>
-            <div class="skill-bar" data-percent="30">
-              <span class="fill"></span>
-            </div>
-          </div>
-          <div class="skill">
-            <div class="skill-head">
-              <strong>HTML/CSS</strong><span>~150h</span>
-            </div>
-            <div class="skill-bar" data-percent="30">
-              <span class="fill"></span>
-            </div>
-          </div>
-          <div class="skill">
-            <div class="skill-head">
-              <strong>Python</strong><span>~125h</span>
-            </div>
-            <div class="skill-bar" data-percent="25">
-              <span class="fill"></span>
-            </div>
+    <section id="skills" class="skills">
+      <h2>Skills</h2>
+      <div class="skills-list">
+        <div class="skill-item">
+          <div class="skill-name">Skript</div>
+          <div class="skill-hours">~450h</div>
+          <div class="skill-bar">
+            <div class="skill-fill" style="width: 90%"></div>
           </div>
         </div>
-          <div class="skill">
-            <div class="skill-head">
-              <strong>Kotlin</strong><span>~20h</span>
-            </div>
-            <div class="skill-bar" data-percent="4">
-              <span class="fill"></span>
-            </div>
+        <div class="skill-item">
+          <div class="skill-name">JavaScript/TypeScript</div>
+          <div class="skill-hours">~150h</div>
+          <div class="skill-bar">
+            <div class="skill-fill" style="width: 30%"></div>
           </div>
-      </section>
-
-      <section id="projects" class="alt-bg" style="padding: 60px 20px">
-        <h2>Projects</h2>
-
-        <article class="project-card">
-          <div
-            style="
-              display: flex;
-              align-items: center;
-              justify-content: space-between;
-            "
-          >
-            <h3 style="margin: 0">ItemEdit [Skript]</h3>
-            <div class="profile-socials" style="margin: 0">
-              <a
-                href="https://github.com/harmfulladvocado/Itemedit-Skript"
-                target="_blank">
-                <img
-                  src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg"
-                  alt="GitHub"/>
-              </a>
-              <a
-                href="https://www.spigotmc.org/resources/itemedit-skript.128574/"
-                target="_blank">
-                <img
-                  src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/spigotmc.svg"
-                  alt="SpigotMC"/>
-              </a>
-            </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">HTML/CSS</div>
+          <div class="skill-hours">~150h</div>
+          <div class="skill-bar">
+            <div class="skill-fill" style="width: 30%"></div>
           </div>
-          <p>
-            A skript version of the plugin
-            <a
-              href="https://www.spigotmc.org/resources/itemedit-1-8-x-1-21-x.40993/"
-              target="_blank"
-              >Itemedit</a>
-            which can edit items almost exactly like the plugin in a simpler and more
-            customizable way
-          </p>
-        </article>
-
-        <article class="project-card">
-          <div
-            style="
-              display: flex;
-              align-items: center;
-              justify-content: space-between;
-            ">
-              <h3 style="margin: 0">AI Humanizer [Python]</h3>
-              <div class="profile-socials" style="margin: 0">
-              <a
-              href="https://github.com/harmfulladvocado/Ai-Humanizer"
-                target="_blank">
-                <img
-                  src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg"
-                  alt="GitHub"/>
-              </a>
-            </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">Python</div>
+          <div class="skill-hours">~125h</div>
+          <div class="skill-bar">
+            <div class="skill-fill" style="width: 25%"></div>
           </div>
-          <p>
-            A python script that retypes your ai generated text to sound more human it
-            replaces words to be simpler and removes chatgpt watermarks it can
-            decreaste the ai checker detection rate by ~30%
-          </p>
-        </article>
-
-        <article class="project-card">
-          <div
-            style="
-              display: flex;
-              align-items: center;
-              justify-content: space-between;
-            ">
-            <h3 style="margin: 0">Playervaults [Skript]</h3>
-            <div class="profile-socials" style="margin: 0">
-              <a href="https://github.com/harmfulladvocado/Playervaults-Skript" target="_blank">
-                <img
-                  src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg"
-                  alt="GitHub"/>
-              </a>
-              <a href="https://www.spigotmc.org/resources/playervaults-skript.128507/" target="_blank">
-                <img
-                  src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/spigotmc.svg"
-                  alt="SpigotMC"/>
-              </a>
-            </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">Kotlin</div>
+          <div class="skill-hours">~20h</div>
+          <div class="skill-bar">
+            <div class="skill-fill" style="width: 4%"></div>
           </div>
-          <p>
-            Playervaults-Skript enables server administrators and players to create and manage personal storage vaults within their game 
-            Using Skript, it provides easy-to-use commands for opening, storing, and retrieving items from player vaults. This script simplifies inventory management while 
-            ensuring secure access to private vaults, making it ideal for Minecraft servers looking to offer customizable storage solutions to their users.
-          </p>
-        </article>
-          <article class="project-card">
-          <div
-            style="
-             display: flex;
-              align-items: center;
-              justify-content: space-between;
-            ">
-            <h3 style="margin: 0">Noise Generator [Python]</h3>
-            <div class="profile-socials" style="margin: 0">
-              <a href="https://github.com/harmfulladvocado/Noise-Generator" target="_blank">
-                <img
-                  src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg"
-                  alt="GitHub"/>
-                </a>
-              </div>
-            </div>
-          <p>
-            Lightweight Python utility that generates "search noise" by repeatedly performing (or simulating) web searches. 
-            It can perform simple DuckDuckGo HTML queries (when requests is available)
-          </p>
-        </article>
-          <article class="project-card">
-          <div
-            style="
-             display: flex;
-              align-items: center;
-              justify-content: space-between;
-            ">
-              <h3 style="margin: 0">Skript Blocks [html, css & javascript]</h3>
-            
-            <div class="profile-socials" style="margin: 0">
-              <a href="https://github.com/harmfulladvocado/harmfulladvocado.github.io/tree/main/Skript-blocks" target="_blank">
-                <img
-                  src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg"
-                  alt="GitHub"/>
-              </a>
-              <a href="https://harmfulladvocado.me/Skript-blocks/">
-                <img src="https://uxwing.com/wp-content/themes/uxwing/download/web-app-development/web-globe-icon.svg">
-              </a>
-            </div>
-          </div>
-            
-          <p>
-            A Scratch-style visual block editor for the Skript language. Drag and drop blocks to create Minecraft server scripts without writing code manually
-          </p>
-        </article>
-
-        <article class="project-card">
-          <div
-            style="
-              display: flex;
-              align-items: center;
-              justify-content: space-between;
-            ">
-            <h3 style="margin: 0">EssentialSkript [Skript]</h3>
-            <div class="profile-socials" style="margin: 0">
-              <a href="https://github.com/harmfulladvocado/EssentialSkript" target="_blank">
-                <img
-                  src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg"
-                  alt="GitHub"/>
-              </a>
-              <a href="https://www.spigotmc.org/resources/essentialskript-skript.130968/" target="_blank">
-                <img
-                  src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/spigotmc.svg"
-                  alt="SpigotMC"/>
-              </a>
-            </div>
-          </div>
-          <p>
-            A version of the plugin EssentialsX in the language Skript
-          </p>
-        </article>
-
-      </section>
-
-      <section id="experience">
-        <h2>Experience</h2>
-        <ul>
-          <li>Co-managed multiple server that had 100-300 users and one that had over 1000+</li>
-          <li>Experienced with interactive web layouts</li>
-          <li>Self-taught Developer</li>
-          <li>Personal projects</li>
-        </ul>
-      </section>
-        <p>use my referal link for proton to get 20 USD free on sub </p> <a href="https://pr.tn/ref/SAX6YB31s">click here for it :)</a>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container">
-        <h3>© harmfulladvocado 2026</h3>
+        </div>
       </div>
-    </footer>
-  </body>
+    </section>
 
+    <section id="projects" class="projects">
+      <h2>Projects</h2>
+      <div class="projects-list">
+        <article class="project-card" data-project="itemedit">
+          <div class="project-header">
+            <h3>ItemEdit</h3>
+            <span class="lang">Skript</span>
+          </div>
+          <p>A skript version of the plugin Itemedit which can edit items almost exactly like the plugin in a simpler and more customizable way</p>
+          <div class="project-stats">
+            <span>Minecraft</span>
+            <span>Plugin</span>
+          </div>
+          <div class="project-footer">
+            <a href="https://github.com/harmfulladvocado/Itemedit-Skript" target="_blank">→ github</a>
+            <a href="https://www.spigotmc.org/resources/itemedit-skript.128574/" target="_blank">→ spigot</a>
+          </div>
+        </article>
+
+        <article class="project-card" data-project="playervaults">
+          <div class="project-header">
+            <h3>Playervaults</h3>
+            <span class="lang">Skript</span>
+          </div>
+          <p>Playervaults-Skript enables server administrators and players to create and manage personal storage vaults within their game Using Skript, it provides easy-to-use commands for opening, storing, and retrieving items from player vaults. This script simplifies inventory management while ensuring secure access to private vaults, making it ideal for Minecraft servers looking to offer customizable storage solutions to their users.</p>
+          <div class="project-stats">
+            <span>Minecraft</span>
+            <span>Plugin</span>
+            <span>Storage</span>
+          </div>
+          <div class="project-footer">
+            <a href="https://www.spigotmc.org/resources/playervaults-skript.128507/" target="_blank">→ spigot</a>
+          </div>
+        </article>
+
+        <article class="project-card" data-project="blocks">
+          <div class="project-header">
+            <h3>Skript Blocks</h3>
+            <span class="lang">HTML/CSS/JS</span>
+          </div>
+          <p>A Scratch-style visual block editor for the Skript language. Drag and drop blocks to create Minecraft server scripts without writing code manually</p>
+          <div class="project-stats">
+            <span>Web App</span>
+            <span>Visual Editor</span>
+            <span>Minecraft</span>
+          </div>
+          <div class="project-footer">
+            <a href="https://github.com/harmfulladvocado/harmfulladvocado.github.io/tree/main/Skript-blocks" target="_blank">→ github</a>
+            <a href="https://harmfulladvocado.me/Skript-blocks/" target="_blank">→ live</a>
+          </div>
+        </article>
+
+        <article class="project-card" data-project="essential">
+          <div class="project-header">
+            <h3>EssentialSkript</h3>
+            <span class="lang">Skript</span>
+          </div>
+          <p>A version of the plugin EssentialsX in the language Skript. brings essential commands and features to your server through skript instead of a compiled plugin.</p>
+          <div class="project-stats">
+            <span>Minecraft</span>
+            <span>Plugin</span>
+            <span>Essentials</span>
+          </div>
+          <div class="project-footer">
+            <a href="https://www.spigotmc.org/resources/essentialskript-skript.130968/" target="_blank">→ spigot</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="experience" class="experience">
+      <h2>Experience</h2>
+      <div class="experience-list">
+        <div class="experience-item">
+          <h3>Server Management</h3>
+          <p>Co-managed multiple Minecraft servers ranging from 100-300 concurrent players, with some reaching 1000+ players. handled everything from plugin setup to player support to server optimization.</p>
+        </div>
+        <div class="experience-item">
+          <h3>Skript Development</h3>
+          <p>Built and maintained various Minecraft Skripts. learned how to handle events, work with data, create custom commands, and manage player interactions on a large scale.</p>
+        </div>
+        <div class="experience-item">
+          <h3>Web Development</h3>
+          <p>Designed and built multiple web interfaces and applications. worked with responsive design, interactive elements, and making sure things look decent on different devices.</p>
+        </div>
+        <div class="experience-item">
+          <h3>Self-Teaching</h3>
+          <p>Completely self-taught developer. learned by doing, reading documentation, watching tutorials, and just figuring stuff out through trial and error, still learning every day.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="promo">
+      <p>using my <a href="https://pr.tn/ref/SAX6YB31s" target="_blank">proton referral</a> gives you 20 usd credit</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a href="https://github.com/harmfulladvocado/harmfulladvocado.github.io" target="_blank">view source on github</a>
+  </footer>
+
+  <script src="scripts.js"></script>
+</body>
 </html>
-
-
-
-
-
-
-
