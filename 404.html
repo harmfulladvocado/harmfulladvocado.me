@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>404 — harmfulladvocado</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            max-width: 1100px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .eyebrow {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+        }
+
+        .error-code {
+            font-size: clamp(6rem, 20vw, 14rem);
+            font-weight: 700;
+            letter-spacing: -0.05em;
+            line-height: 0.9;
+        }
+
+        .message {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 460px;
+            line-height: 1.7;
+            margin-top: 2rem;
+        }
+
+        .actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 2.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .content { padding-top: 10rem; padding-bottom: 4rem; justify-content: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="glow-bg"></div>
+
+<header class="navbar">
+    <a href="/" class="brand">harmfulladvocado</a>
+</header>
+
+<main class="content">
+    <p class="eyebrow">ERROR // 404</p>
+    <h1 class="error-code">404</h1>
+    <p class="message">this page doesn't exist, or it moved somewhere else. either way, you took a wrong turn.</p>
+    <div class="actions">
+        <a href="/" class="nav-btn"><span>→ go home</span></a>
+    </div>
+</main>
+
+<footer class="dock-footer">
+    <div class="footer-inner">
+        <span>© 2026 harmfulladvocado</span>
+        <a href="https://github.com/harmfulladvocado/harmfulladvocado.github.io" target="_blank" class="footer-link">site.source</a>
+    </div>
+</footer>
+</body>
+</html>
