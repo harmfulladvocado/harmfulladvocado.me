@@ -3,7 +3,6 @@ import { afterEach, beforeEach, describe, expect, it } from 'vitest'
 import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 
 import { App } from './App.tsx'
-import homepage from './content/homepage.json'
 import projectsData from './content/projects.json'
 import site from './content/site.json'
 import skillsData from './content/skills.json'
@@ -24,7 +23,6 @@ describe('App', () => {
   it('renders the home sections and dynamic age', () => {
     render(<App />)
 
-    expect(screen.getByRole('heading', { level: 1 }).textContent).toContain(homepage.hero['heading-line'])
     expect(screen.getByText(String(calculateAge(site['age-epoch'])))).toBeDefined()
     expect(screen.getByRole('heading', { level: 2, name: 'about' })).toBeDefined()
     expect(screen.getByRole('heading', { level: 2, name: 'projects' })).toBeDefined()

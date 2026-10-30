@@ -13,23 +13,6 @@
   gap            : var(--space-lg);
 }
 
-.hero__eyebrow {
-  color          : var(--color-accent);
-  font-family    : var(--font-mono);
-  font-size      : 0.78rem;
-  letter-spacing : 0.14em;
-  text-transform : uppercase;
-}
-
-.hero__title {
-  display        : flex;
-  flex-direction : column;
-}
-
-.hero__title-accent {
-  color : var(--color-accent);
-}
-
 .hero__intro {
   max-width   : 38rem;
   color       : var(--color-text-muted);
@@ -110,7 +93,6 @@
 @media (min-width: 860px) {
   .hero {
     grid-template-columns : minmax(0, 1fr) auto;
-    min-height            : 34rem;
     padding-top           : var(--space-2xl);
   }
 

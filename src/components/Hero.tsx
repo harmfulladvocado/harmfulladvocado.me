@@ -18,11 +18,6 @@ export const Hero: React.FC = () => {
   return (
     <section className={`hero reveal ${inView ? 'reveal--visible' : ''}`.trim()} ref={ref}>
       <div className="hero__content">
-        <p className="hero__eyebrow">{homepage.hero.eyebrow}</p>
-        <h1 className="hero__title">
-          {homepage.hero['heading-line']}
-          <span className="hero__title-accent">{homepage.hero['heading-accent']}</span>
-        </h1>
         <p className="hero__intro">
           <RichText
             template={homepage.hero.intro}

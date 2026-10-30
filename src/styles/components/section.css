@@ -41,8 +41,6 @@
   }
 
   .section__header {
-    position       : sticky;
-    top            : 6.5rem;
     flex-direction : column;
     margin-bottom  : 0;
     gap            : var(--space-xs);
