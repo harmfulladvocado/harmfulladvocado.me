@@ -1,0 +1,29 @@
+{
+  "about": {
+    "paragraphs": [
+      "i got into coding to figure out how game servers worked. what started as small config tweaks quickly snowballed into something much bigger. i enjoy building systems that remove friction and fix things nobody else wants to fix.",
+      "currently studying computer science, writing tools to automate my workflows, and exploring new languages."
+    ]
+  },
+  "hero": {
+    "eyebrow": "hello, i'm harmfulladvocado",
+    "heading-accent": "for the internet.",
+    "heading-line": "building things",
+    "intro": "i'm an {age}-year-old developer based in belgium. i spend my time creating tools, working at {minekot}, and building fast, efficient systems. i'm a huge advocate for open-source software, using and contributing to it whenever i can.",
+    "minekot-label": "MineKotLang"
+  },
+  "sections": {
+    "about": {
+      "number": "01",
+      "title": "about"
+    },
+    "projects": {
+      "number": "02",
+      "title": "projects"
+    },
+    "stack": {
+      "number": "03",
+      "title": "stack"
+    }
+  }
+}

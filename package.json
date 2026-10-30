@@ -1,0 +1,43 @@
+{
+  "name": "harmfulladvocado.me",
+  "version": "2.0.0",
+  "description": "Personal site for harmfulladvocado",
+  "private": true,
+  "scripts": {
+    "build": "tsx src/build.ts",
+    "dev": "concurrently -k \"tsx src/build.ts --watch\" \"browser-sync start --config bs-config.js\"",
+    "preview": "http-server dist -p 4173",
+    "serve": "http-server dist",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harmfulladvocado/harmfulladvocado.me.git"
+  },
+  "author": "harmfulladvocado",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/harmfulladvocado/harmfulladvocado.me/issues"
+  },
+  "homepage": "https://harmfulladvocado.me",
+  "dependencies": {
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16.3.3",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "browser-sync": "^3.0.4",
+    "concurrently": "^10.0.6",
+    "esbuild": "^0.28.2",
+    "happy-dom": "^21.0.4",
+    "http-server": "^14.1.1",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5"
+  }
+}

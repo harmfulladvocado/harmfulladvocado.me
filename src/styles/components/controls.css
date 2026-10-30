@@ -1,0 +1,19 @@
+.theme-toggle,
+.header__menu,
+.socials__link,
+.project__action,
+.not-found__link,
+.footer__top {
+  transition : background-color 80ms linear, border-color 80ms linear, color 80ms linear;
+}
+
+.theme-toggle:hover,
+.header__menu:hover,
+.socials__link:hover,
+.project__action:hover,
+.not-found__link:hover,
+.footer__top:hover {
+  border-color     : var(--color-accent-line);
+  background-color : var(--color-surface-raised);
+  color            : var(--color-accent);
+}

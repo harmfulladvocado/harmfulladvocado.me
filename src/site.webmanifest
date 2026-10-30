@@ -1,0 +1,16 @@
+{
+  "background_color": "#060a07",
+  "description": "Personal site of harmfulladvocado, a developer from Belgium building tools and open-source software.",
+  "display": "standalone",
+  "icons": [
+    {
+      "sizes": "any",
+      "src": "/images/pfp.svg",
+      "type": "image/svg"
+    }
+  ],
+  "name": "harmfulladvocado",
+  "short_name": "harmfulladvocado",
+  "start_url": "/",
+  "theme_color": "#060a07"
+}

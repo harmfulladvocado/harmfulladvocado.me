@@ -1,0 +1,76 @@
+*,
+*::before,
+*::after {
+  box-sizing : border-box;
+  margin     : 0;
+  padding    : 0;
+}
+
+html {
+  min-height         : 100%;
+  scroll-padding-top : 6rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior : smooth;
+  }
+}
+
+body {
+  min-height       : 100vh;
+  background-color : var(--color-background);
+  color            : var(--color-text);
+  overflow-x       : clip;
+  transition       : background-color var(--transition-slow), color var(--transition-slow);
+}
+
+body::before {
+  position         : fixed;
+  inset            : 0;
+  z-index          : -2;
+  background-image : linear-gradient(var(--color-border) 1px, transparent 1px),
+                     linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
+  background-size  : 4rem 4rem;
+  content          : "";
+  mask-image       : radial-gradient(circle at 50% 0%, #000000 0%, transparent 65%);
+  opacity          : 0.22;
+  pointer-events   : none;
+}
+
+.app {
+  position       : relative;
+  display        : flex;
+  flex-direction : column;
+  min-height     : 100vh;
+  isolation      : isolate;
+}
+
+.main {
+  flex       : 1 0 auto;
+  width      : 100%;
+  max-width  : var(--content-width);
+  margin     : 0 auto;
+  padding    : 7rem var(--space-lg) var(--space-3xl);
+}
+
+.no-script {
+  display        : flex;
+  flex-direction : column;
+  max-width      : 40rem;
+  margin         : 0 auto;
+  padding        : 8rem var(--space-lg);
+  gap            : var(--space-md);
+}
+
+.no-script ul {
+  display        : flex;
+  flex-direction : column;
+  list-style     : none;
+  gap            : var(--space-xs);
+}
+
+.no-script a {
+  color           : var(--color-accent);
+  text-decoration : underline;
+}

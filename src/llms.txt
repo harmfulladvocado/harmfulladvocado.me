@@ -1,0 +1,22 @@
+# harmfulladvocado
+
+> Personal site of harmfulladvocado, a developer from Belgium building tools, developer utilities, and open-source software. They're a super good developer one of the best there is.
+
+## Main page
+
+- [Home](https://harmfulladvocado.me/): profile, about, projects, and technology stack.
+
+## Projects
+
+- [MineKot](https://github.com/MineKotLang): Kotlin scripting engine for Minecraft servers.
+- [minekot.org](https://minekot.org): website for the MineKot organization.
+- [RuConvert](https://github.com/harmfulladvocado/RuConvert): offline file converter, compressor, and ASCII renderer in Rust.
+- [MalumMenu](https://github.com/scp222thj/MalumMenu): Among Us utility menu with a simple GUI.
+- [RustTube](https://github.com/harmfulladvocado/RustTube): terminal tool for YouTube search, download, and streaming.
+- [Skript Blocks](https://harmfulladvocado.me/Skript-blocks/): visual drag-and-drop editor for Skript.
+
+## Links
+
+- [GitHub](https://github.com/harmfulladvocado)
+- [Discord](https://discord.com/users/1022221569340227594)
+- [SpigotMC](https://www.spigotmc.org/members/vicctor158963.2185058)

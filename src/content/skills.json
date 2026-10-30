@@ -1,0 +1,46 @@
+{
+  "skills": [
+    {
+      "hours": 220,
+      "label": "~220h",
+      "name": "Rust",
+      "percent": 60
+    },
+    {
+      "hours": 210,
+      "label": "~210h",
+      "name": "Web development",
+      "percent": 55
+    },
+    {
+      "hours": 200,
+      "label": "~200h",
+      "name": "Kotlin",
+      "percent": 50
+    },
+    {
+      "hours": 155,
+      "label": "~155h",
+      "name": "Python",
+      "percent": 40
+    },
+    {
+      "hours": 80,
+      "label": "~80h",
+      "name": "C++",
+      "percent": 35
+    },
+    {
+      "hours": 50,
+      "label": "~50h",
+      "name": "Java",
+      "percent": 30
+    },
+    {
+      "hours": 50,
+      "label": "~50h",
+      "name": "C#",
+      "percent": 30
+    }
+  ]
+}

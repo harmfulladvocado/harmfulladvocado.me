@@ -1,0 +1,84 @@
+{
+  "projects": [
+    {
+      "actions": [
+        {
+          "external": true,
+          "href": "https://github.com/MineKotLang/minekot.org",
+          "label": "source"
+        },
+        {
+          "external": true,
+          "href": "https://minekot.org",
+          "label": "live"
+        }
+      ],
+      "description": "The website for the MineKot organization. Fast, config-driven, and built around a small component system.",
+      "featured": true,
+      "id": "minekot-org",
+      "name": "minekot.org",
+      "tag": "web development"
+    },
+    {
+      "actions": [
+        {
+          "external": true,
+          "href": "https://github.com/harmfulladvocado/RuConvert",
+          "label": "source"
+        }
+      ],
+      "description": "High-performance, CLI-based, offline file converter, compressor, and ASCII renderer written in Rust.",
+      "featured": false,
+      "id": "ruconvert",
+      "name": "RuConvert",
+      "tag": "rust"
+    },
+    {
+      "actions": [
+        {
+          "external": true,
+          "href": "https://github.com/scp222thj/MalumMenu",
+          "label": "view branch"
+        }
+      ],
+      "description": "An easy-to-use Among Us utility menu with a simple GUI and a lot of useful modules.",
+      "featured": false,
+      "id": "malummenu",
+      "name": "MalumMenu",
+      "tag": "c#"
+    },
+    {
+      "actions": [
+        {
+          "external": true,
+          "href": "https://github.com/harmfulladvocado/RustTube",
+          "label": "source"
+        }
+      ],
+      "description": "A fast terminal tool for YouTube that lets you search, download, and stream videos without a browser or account.",
+      "featured": false,
+      "id": "rusttube",
+      "name": "RustTube",
+      "tag": "rust"
+    },
+    {
+      "actions": [
+        {
+          "external": true,
+          "href": "https://github.com/harmfulladvocado/harmfulladvocado.me/tree/main/Skript-blocks",
+          "label": "repository"
+        },
+        {
+          "external": true,
+          "href": "https://harmfulladvocado.me/Skript-blocks/",
+          "label": "live"
+        }
+      ],
+      "description": "A visual drag-and-drop place that helps users generate Skript code without writing syntax manually.",
+      "featured": false,
+      "id": "skript-blocks",
+      "name": "Skript Blocks",
+      "tag": "web development"
+    }
+  ]
+}

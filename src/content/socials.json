@@ -1,0 +1,19 @@
+{
+  "links": [
+    {
+      "href": "https://github.com/harmfulladvocado",
+      "icon": "github",
+      "label": "GitHub"
+    },
+    {
+      "href": "https://discord.com/users/1022221569340227594",
+      "icon": "discord",
+      "label": "Discord"
+    },
+    {
+      "href": "https://www.spigotmc.org/members/vicctor158963.2185058",
+      "icon": "spigot",
+      "label": "SpigotMC"
+    }
+  ]
+}

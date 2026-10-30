@@ -1,0 +1,19 @@
+{
+  "items": [
+    {
+      "hash": "#about",
+      "id": "about",
+      "label": "ABOUT"
+    },
+    {
+      "hash": "#projects",
+      "id": "projects",
+      "label": "PROJECTS"
+    },
+    {
+      "hash": "#stack",
+      "id": "stack",
+      "label": "STACK"
+    }
+  ]
+}
