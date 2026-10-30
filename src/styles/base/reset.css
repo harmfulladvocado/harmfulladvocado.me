@@ -8,13 +8,8 @@
 
 html {
   min-height         : 100%;
+  scroll-behavior    : smooth;
   scroll-padding-top : 6rem;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior : smooth;
-  }
 }
 
 body {

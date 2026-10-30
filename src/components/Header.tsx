@@ -4,6 +4,7 @@ import navigationData from '../content/navigation.json'
 import site from '../content/site.json'
 import { useActiveSection } from '../hooks/useActiveSection.ts'
 import { useTheme } from '../hooks/useTheme.tsx'
+import { scrollToElement } from '../utils/scroll.ts'
 import type { NavigationItem } from '../types.ts'
 import { CloseIcon, MenuIcon } from './icons.tsx'
 import { ThemeToggle } from './ThemeToggle.tsx'
@@ -42,6 +43,25 @@ export const Header: React.FC = () => {
     setMenuOpen(false)
   }
 
+  const handleNavigation = (event: React.MouseEvent<HTMLAnchorElement>, item: NavigationItem): void => {
+    const target = document.getElementById(item.id)
+
+    if (!target) {
+      closeMenu()
+      return
+    }
+
+    event.preventDefault()
+
+    document.body.classList.remove('body--menu-open')
+    setMenuOpen(false)
+    // flush styles, hidden overflow must not clamp the scroll target
+    void document.body.offsetHeight
+
+    scrollToElement(target)
+    window.history.replaceState(null, '', item.hash)
+  }
+
   return (
     <header className={`header ${menuOpen ? 'header--open' : ''}`.trim()}>
       <div className="header__inner">
@@ -56,7 +76,7 @@ export const Header: React.FC = () => {
               className="header__link"
               href={`/${item.hash}`}
               key={item.id}
-              onClick={closeMenu}
+              onClick={(event: React.MouseEvent<HTMLAnchorElement>) => handleNavigation(event, item)}
             >
               <span className="header__link-label">{item.label}</span>
             </a>

@@ -35,17 +35,17 @@
 }
 
 [data-theme="light"] {
-  --color-background      : #f6f8f4;
-  --color-surface         : #ffffff;
-  --color-surface-raised  : #edf2ea;
-  --color-border          : #dce4da;
-  --color-border-strong   : #c2d0be;
-  --color-text            : #101812;
-  --color-text-muted      : #5c6a60;
-  --color-text-faint      : #66746a;
-  --color-accent          : #4f7a2c;
-  --color-accent-strong   : #3d6120;
-  --color-accent-line     : rgba(79, 122, 44, 0.3);
+  --color-background      : #eef2ea;
+  --color-surface         : #fafcf8;
+  --color-surface-raised  : #ffffff;
+  --color-border          : #d9e0d3;
+  --color-border-strong   : #aebcab;
+  --color-text            : #121a13;
+  --color-text-muted      : #3f4d42;
+  --color-text-faint      : #5d6b5f;
+  --color-accent          : #37611a;
+  --color-accent-strong   : #23400e;
+  --color-accent-line     : rgba(55, 97, 26, 0.35);
 
   color-scheme : light;
 }
