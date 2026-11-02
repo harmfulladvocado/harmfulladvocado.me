@@ -60,25 +60,6 @@
       "id": "rusttube",
       "name": "RustTube",
       "tag": "rust"
-    },
-    {
-      "actions": [
-        {
-          "external": true,
-          "href": "https://github.com/harmfulladvocado/harmfulladvocado.me/tree/main/Skript-blocks",
-          "label": "repository"
-        },
-        {
-          "external": true,
-          "href": "https://harmfulladvocado.me/Skript-blocks/",
-          "label": "live"
-        }
-      ],
-      "description": "A visual drag-and-drop place that helps users generate Skript code without writing syntax manually.",
-      "featured": false,
-      "id": "skript-blocks",
-      "name": "Skript Blocks",
-      "tag": "web development"
     }
   ]
 }
